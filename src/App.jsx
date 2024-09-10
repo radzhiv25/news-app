@@ -1,11 +1,17 @@
+import Footer from "./components/Footer"
+import Hero from "./components/Hero"
+import Navbar from "./components/Navbar"
+import NewsContent from "./components/NewsContent"
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <p>News App</p>
-    </>
+    <div className="flex flex-col h-screen">
+      <Navbar />
+      <Hero />
+      <NewsContent />
+      <Footer />
+    </div>
   )
 }
 
