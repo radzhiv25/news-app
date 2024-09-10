@@ -9,12 +9,13 @@ const NewsContent = ({ query }) => {
   const [totalPages, setTotalPages] = useState(1); // Total number of pages
 
   const articlesPerPage = 10; // You can adjust the number of articles per page
+  const apiKey = import.meta.env.VITE_NEWS_API_KEY;
 
   const getNewsData = async (page, searchQuery) => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=&page=${page}&max=${articlesPerPage}`
+        `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&page=${page}&max=${articlesPerPage}`
       );
       console.log(res.data);
       setNewsData(res.data.articles);
