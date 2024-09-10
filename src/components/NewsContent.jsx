@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const NewsContent = () => {
+const NewsContent = ({ query }) => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const [totalPages, setTotalPages] = useState(1); // Total number of pages
-  const [query, setQuery] = useState("latest"); // Default to show latest content
-  const [searchInput, setSearchInput] = useState(""); // Input field value
 
   const articlesPerPage = 10; // You can adjust the number of articles per page
 
@@ -45,20 +43,6 @@ const NewsContent = () => {
     }
   };
 
-  // Handle form submission for search
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    // If the input is empty, show the latest content
-    if (searchInput.trim() === "") {
-      setQuery("latest");
-    } else {
-      setQuery(searchInput.trim()); // Set the new query based on input
-    }
-
-    setCurrentPage(1); // Reset to page 1 on new search
-  };
-
   // Function to format date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -90,27 +74,11 @@ const NewsContent = () => {
   };
 
   if (error) {
-    return <p className="md:w-3/4 mt-20 md:mx-auto mx-5">There was an error fetching the news: {error.message}</p>;
+    return <p className="md:w-3/4 md:mx-auto mx-5">There was an error fetching the news: {error.message}</p>;
   }
 
   return (
-    <div className="md:w-3/4 md:mx-auto mx-5 md:mt-20 mt-10">
-      {/* Search Input Field */}
-      <form onSubmit={handleSearch} className="mb-4">
-        <div className="md:w-3/4 mx-auto flex items-center">
-        <input
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search news"
-          className="border p-2 mr-2 w-full rounded outline-none"
-        />
-        <button type="submit" className="px-4 py-2 bg-black text-white rounded">
-          Search
-        </button>
-        </div>
-      </form>
-
+    <div className="md:w-3/4 md:mx-auto mx-5">
       {/* News Content or Skeleton Loader */}
       {loading ? (
         renderSkeletonLoader() // Render the skeleton loader while data is loading
@@ -161,7 +129,7 @@ const NewsContent = () => {
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-1 bg-gray-300 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Previous
         </button>
@@ -173,7 +141,7 @@ const NewsContent = () => {
         <button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-1 bg-gray-300 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Next
         </button>
