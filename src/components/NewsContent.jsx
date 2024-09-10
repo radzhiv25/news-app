@@ -66,7 +66,7 @@ const NewsContent = ({ query }) => {
   );
 
   // Function to limit the description to 30 words
-  const limitDescription = (description, wordLimit = 40) => {
+  const limitDescription = (description, wordLimit = 30) => {
     const words = description.split(' ');
     if (words.length > wordLimit) {
       return words.slice(0, wordLimit).join(' ') + '...'; // Add ellipsis if truncated

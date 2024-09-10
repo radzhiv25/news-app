@@ -19,7 +19,6 @@ const Hero = ({ setQuery }) => {
       </h1>
       <p className="mt-10 md:text-3xl text-xl font-semibold text-center">The features we offer</p>
       <div className="mb-10 border border-dashed p-2 grid md:grid-cols-3 grid-cols-2 gap-2 rounded">
-        {/* Feature 1 - Personalized News Feed */}
         <div className="border border-dashed p-2 rounded col-span-2 hover:shadow-md">
           <h3 className="text-xl font-semibold">Personalized News Feed</h3>
           <p className="text-gray-500 text-sm">
@@ -29,7 +28,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 2 - Trending News Section */}
         <div className="border border-dashed p-2 rounded hover:shadow-md">
           <h3 className="text-xl font-semibold">Trending News Section</h3>
           <p className="text-gray-500 text-sm">
@@ -37,7 +35,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 3 - Bookmarks and Favorites */}
         <div className="border border-dashed p-2 rounded hover:shadow-md">
           <h3 className="text-xl font-semibold">Bookmarks and Favorites</h3>
           <p className="text-gray-500 text-sm">
@@ -46,7 +43,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 4 - Category-based Filtering */}
         <div className="border border-dashed p-2 rounded col-span-2 hover:shadow-md">
           <h3 className="text-xl font-semibold">Category-based Filtering</h3>
           <p className="text-gray-500 text-sm">
@@ -55,7 +51,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 5 - Push Notifications */}
         <div className="border border-dashed p-2 rounded hover:shadow-md">
           <h3 className="text-xl font-semibold">Push Notifications</h3>
           <p className="text-gray-500 text-sm">
@@ -63,7 +58,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 6 - Multi-Language Support */}
         <div className="border border-dashed p-2 rounded hover:shadow-md">
           <h3 className="text-xl font-semibold">Multi-Language Support</h3>
           <p className="text-gray-500 text-sm">
@@ -72,7 +66,6 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
 
-        {/* Feature 7 - Dark Mode */}
         <div className="border border-dashed p-2 rounded hover:shadow-md">
           <h3 className="text-xl font-semibold">Dark Mode</h3>
           <p className="text-gray-500 text-sm">
@@ -81,6 +74,7 @@ const Hero = ({ setQuery }) => {
           </p>
         </div>
       </div>
+      
       <div className="mt-5 animate-fade-in-up animation-delay-400 space-y-2 md:w-max mx-auto">
         <h3 className="text-lg font-semibold mb-2 flex items-center text-gray-700 md:w-max mx-auto">
           <FiTrendingUp className="h-5 w-5 mr-2 text-gray-600" />
