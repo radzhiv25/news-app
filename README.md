@@ -14,7 +14,7 @@ A simple and intuitive news application built with ReactJS, TailwindCSS, and Axi
 
 ## Demo
 
-Check out the live demo: [Aconews](https://pennwise.vercel.app/)
+Check out the live demo: [Aconews](https://aconews-radzhiv.web.app/)
 
 ## Features
 
@@ -40,7 +40,7 @@ To get a local copy up and running, follow these simple steps:
 
     ```sh
     git clone https://github.com/your-username/news-app.git
-    cd expense-tracker
+    cd news-app
     ```
 
 2. **Install dependencies:**
