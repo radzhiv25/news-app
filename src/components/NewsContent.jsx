@@ -66,7 +66,7 @@ const NewsContent = ({ query }) => {
   );
 
   // Function to limit the description to 30 words
-  const limitDescription = (description, wordLimit = 30) => {
+  const limitDescription = (description, wordLimit = 20) => {
     const words = description.split(' ');
     if (words.length > wordLimit) {
       return words.slice(0, wordLimit).join(' ') + '...'; // Add ellipsis if truncated
@@ -89,7 +89,7 @@ const NewsContent = ({ query }) => {
             newsData.map((item) => (
               <div
                 key={item.url}
-                className="p-3 border rounded-md flex flex-col gap-2 h-full" // Ensures card takes full height
+                className="p-3 border rounded-md flex flex-col gap-2 h-full hover:shadow-md" // Ensures card takes full height
               >
                 <h1 className="text-xl font-semibold">{item.title}</h1>
                 <div className="h-48 flex-shrink-0">
@@ -103,12 +103,14 @@ const NewsContent = ({ query }) => {
                   <p className="text-sm">{limitDescription(item.description)}</p>
                 </div>
                 {/* Format the published date */}
+                <div className="flex justify-between text-sm items-center">
+                  <span className="flex flex-col">
                 <p className="text-xs mt-auto">{formatDate(item.publishedAt)}</p>
-                <span className="flex justify-between text-sm">
+
                   <a href={item.source.url} className="hover:underline font-medium">
-                    Source: {item.source.name}
+                    {item.source.name}
                   </a>
-                </span>
+                  </span>
                 <a
                   href={item.url}
                   target="_blank"
@@ -117,6 +119,7 @@ const NewsContent = ({ query }) => {
                 >
                   Read more
                 </a>
+                </div>
               </div>
             ))
           ) : (
