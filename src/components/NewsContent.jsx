@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+// Import the country and language data
+import { countries, languages } from '/data';
 
 const NewsContent = ({ query }) => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page
-  const [totalPages, setTotalPages] = useState(1); // Total number of pages
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const articlesPerPage = 10; // You can adjust the number of articles per page
-  const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+  // State for country and language selection
+  const [selectedCountry, setSelectedCountry] = useState("us"); // Default: United States
+  const [selectedLanguage, setSelectedLanguage] = useState("en"); // Default: English
 
-  const getNewsData = async (page, searchQuery) => {
+  const articlesPerPage = 10;
+  const apiKey = import.meta.env.VITE_NEWS_API_KEY; // Ensure the API key is available in your environment variables
+
+  const getNewsData = async (page, searchQuery, country, language) => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&page=${page}&max=${articlesPerPage}`
+        `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&page=${page}&max=${articlesPerPage}&country=${country}&lang=${language}`
       );
-      console.log(res.data);
       setNewsData(res.data.articles);
-      setTotalPages(Math.ceil(res.data.totalArticles / articlesPerPage)); // Calculate total pages based on total articles
+      setTotalPages(Math.ceil(res.data.totalArticles / articlesPerPage));
     } catch (error) {
       console.error("Error fetching news", error);
       setError(error);
@@ -29,8 +34,8 @@ const NewsContent = ({ query }) => {
   };
 
   useEffect(() => {
-    getNewsData(currentPage, query); // Fetch news when currentPage or query changes
-  }, [currentPage, query]); // Trigger effect when currentPage or query changes
+    getNewsData(currentPage, query, selectedCountry, selectedLanguage);
+  }, [currentPage, query, selectedCountry, selectedLanguage]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -42,6 +47,15 @@ const NewsContent = ({ query }) => {
     if (currentPage > 1) {
       setCurrentPage((prevPage) => prevPage - 1);
     }
+  };
+
+  // Handle country and language changes
+  const handleCountryChange = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  const handleLanguageChange = (e) => {
+    setSelectedLanguage(e.target.value);
   };
 
   // Function to format date
@@ -80,6 +94,43 @@ const NewsContent = ({ query }) => {
 
   return (
     <div className="md:w-3/4 md:mx-auto mx-5">
+      {/* Country and Language Filters */}
+      <div className="flex items-center gap-3 mb-6">
+        {/* Country Dropdown */}
+        <div>
+          <label htmlFor="country" className="mr-2">Country:</label>
+          <select
+            id="country"
+            value={selectedCountry}
+            onChange={handleCountryChange}
+            className="py-1 px-2 border rounded outline-none"
+          >
+            {countries.map((country) => (
+              <option key={country.code} value={country.code}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Language Dropdown */}
+        <div>
+          <label htmlFor="language" className="mr-2">Language:</label>
+          <select
+            id="language"
+            value={selectedLanguage}
+            onChange={handleLanguageChange}
+            className="px-2 py-1 border rounded outline-none"
+          >
+            {languages.map((language) => (
+              <option key={language.code} value={language.code}>
+                {language.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {/* News Content or Skeleton Loader */}
       {loading ? (
         renderSkeletonLoader() // Render the skeleton loader while data is loading
