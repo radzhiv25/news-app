@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useDarkMode } from "./DarkModeContext";
 
 const Search = ({ onSearch }) => {
+  const { darkMode } = useDarkMode();
   const [searchInput, setSearchInput] = useState("");
 
   // Handle form submission for search
@@ -24,9 +26,9 @@ const Search = ({ onSearch }) => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Search news"
-          className="border border-dashed p-2 mr-2 w-full rounded outline-none"
+          className="border border-dashed box-border p-2 mr-2 w-full rounded outline-none"
         />
-        <button type="submit" className="px-4 py-2 bg-black text-white rounded">
+        <button type="submit" className="px-4 py-2 bg-black dark:bg-zinc-500 text-white rounded">
           Search
         </button>
       </div>

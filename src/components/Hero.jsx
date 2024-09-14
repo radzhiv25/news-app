@@ -1,4 +1,5 @@
 import { FiTrendingUp } from "react-icons/fi";
+import { useDarkMode } from "./DarkModeContext";
 
 const Hero = ({ setQuery }) => {
   const trendingTopics = [
@@ -9,6 +10,7 @@ const Hero = ({ setQuery }) => {
     "Renewable Energy",
   ];
 
+  const { darkMode } = useDarkMode();
   return (
     <div className="md:w-3/4 md:mx-auto mx-5 mb-5">
       <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight leading-1 text-center">
@@ -76,8 +78,8 @@ const Hero = ({ setQuery }) => {
       </div>
       
       <div className="mt-5 animate-fade-in-up animation-delay-400 space-y-2 md:w-max mx-auto">
-        <h3 className="text-lg font-semibold mb-2 flex items-center text-gray-700 md:w-max mx-auto">
-          <FiTrendingUp className="h-5 w-5 mr-2 text-gray-600" />
+        <h3 className="text-lg font-semibold mb-2 flex items-center text-gray-700 dark:text-white md:w-max mx-auto">
+          <FiTrendingUp className="h-5 w-5 mr-2 text-gray-600 dark:text-white" />
           Trending Topics
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -85,7 +87,7 @@ const Hero = ({ setQuery }) => {
             <span
               key={index}
               onClick={() => setQuery(topic)} // Set the query when a topic is clicked
-              className="bg-white text-gray-700 text-sm px-3 py-1 rounded-full border border-dashed hover:bg-gray-200 transition-all duration-300 cursor-pointer transform hover:scale-105"
+              className="bg-white dark:bg-transparent text-gray-700 dark:text-white text-sm px-3 py-1 rounded-full border border-dashed dark:border-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 cursor-pointer transform hover:scale-105"
             >
               {topic}
             </span>
