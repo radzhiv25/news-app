@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="md:size-10 size-8 rounded-full bg-gradient-to-br from-gray-300 to-black animate-gradient"></div>
         <div className="">
           <h1 className="bg-gradient-to-br from-gray-300 dark:from-white via-black dark:via gray-500 bg-clip-text text-transparent md:text-2xl text-xl font-semibold leading-none">
-            Aconews
+            NewsX
           </h1>
           <p className="text-xs leading-none text-gray-500 dark:text-gray-200">news at one place</p>
         </div>
