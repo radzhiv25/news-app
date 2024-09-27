@@ -1,4 +1,4 @@
-# Aconews
+# NewsX
 
 A simple and intuitive news application built with ReactJS, TailwindCSS, and Axios. This application allows users to search for news, explore trending topics, and view the latest articles with pagination support. The app is designed to be responsive and provides users with up-to-date information on a wide range of topics.
 
@@ -14,7 +14,7 @@ A simple and intuitive news application built with ReactJS, TailwindCSS, and Axi
 
 ## Demo
 
-Check out the live demo: [Aconews](https://aconews-radzhiv.web.app/)
+Check out the live demo: [NewsX](https://aconews-radzhiv.web.app/)
 
 ## Features
 
