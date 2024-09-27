@@ -14,7 +14,7 @@ A simple and intuitive news application built with ReactJS, TailwindCSS, and Axi
 
 ## Demo
 
-Check out the live demo: [NewsX](https://aconews-radzhiv.web.app/)
+Check out the live demo: [NewsX](https://newsx-radzhiv.web.app/)
 
 ## Features
 
